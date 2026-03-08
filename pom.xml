@@ -29,4 +29,17 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <!-- ✅ Added distributionManagement for deployment -->
+    <distributionManagement>
+        <repository>
+            <id>internal.repo</id>
+            <url>https://your-repo-url/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>internal.repo.snapshots</id>
+            <url>https://your-repo-url/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 </project>
