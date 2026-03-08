@@ -4,43 +4,51 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.houari</groupId>
-    <artifactId>Calculator</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <!-- Parent POM for Spring Boot -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.2.0</version> <!-- Use latest stable version -->
+        <relativePath/>
+    </parent>
+
+    <groupId>com.example</groupId>
+    <artifactId>my-application</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
-        <jackson-dataformat-yaml.version>2.14.2</jackson-dataformat-yaml.version>
-        <junit-jupiter-params.version>5.9.2</junit-jupiter-params.version>
+        <java.version>17</java.version>
     </properties>
 
     <dependencies>
+        <!-- Web starter for REST APIs -->
         <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-            <version>${jackson-dataformat-yaml.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        
+        <!-- Optional: For Firebase admin, as seen in {Link: Medium https://mikalshrestha.medium.com/sending-push-notification-to-android-from-react-app-using-spring-boot-rest-api-and-fcm-a4bde40d62f1} [1] -->
+        <dependency>
+            <groupId>com.google.firebase</groupId>
+            <artifactId>firebase-admin</artifactId>
+            <version>6.11.0</version>
         </dependency>
 
+        <!-- Testing dependency -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>${junit-jupiter-params.version}</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
 
-    <!-- ✅ Distribution management for deploy -->
-    <distributionManagement>
-        <repository>
-            <id>company-releases</id>
-            <url>https://nexus.mycompany.com/repository/maven-releases/</url>
-        </repository>
-        <snapshotRepository>
-            <id>company-snapshots</id>
-            <url>https://nexus.mycompany.com/repository/maven-snapshots/</url>
-        </snapshotRepository>
-    </distributionManagement>
-
+    <build>
+        <plugins>
+            <!-- Plugin to package application as an executable JAR -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
