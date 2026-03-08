@@ -7,6 +7,7 @@
     <groupId>com.houari</groupId>
     <artifactId>Calculator</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
@@ -30,15 +31,15 @@
         </dependency>
     </dependencies>
 
-    <!-- ✅ Added distributionManagement for deployment -->
+    <!-- ✅ Distribution management for deploy -->
     <distributionManagement>
         <repository>
-            <id>internal.repo</id>
-            <url>https://your-repo-url/repository/maven-releases/</url>
+            <id>company-releases</id>
+            <url>https://nexus.mycompany.com/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>internal.repo.snapshots</id>
-            <url>https://your-repo-url/repository/maven-snapshots/</url>
+            <id>company-snapshots</id>
+            <url>https://nexus.mycompany.com/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 
